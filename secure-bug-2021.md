@@ -1,6 +1,8 @@
 # SECURE BUG CTF
 
 It was awesome ctf ,so let's enjoy with writeup.
+![Screenshot at 2021-07-21 23-00-03](https://user-images.githubusercontent.com/52857059/126559479-6a970fa9-6aa4-4f15-8b10-de9ad4189aa0.png)
+ It isn't bad score :"D
 
 # web challenges:
 
@@ -185,7 +187,8 @@ function main() {
 ```
   if we access this file locally it returns true , so first test is done.
   
-  XXE test 
+  XXE test :
+  
   xxe payload 
   ```html
 <?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY test SYSTEM 'file:///root/ctf/payload/src/xxe_secret'>]><root>&test;</root>
@@ -289,6 +292,8 @@ now let's see what is in passwd column by this payload :
 
 By guessing &trying I finally got the flag :"D
 ![Screenshot at 2021-07-21 13-06-03](https://user-images.githubusercontent.com/52857059/126555257-a0cbdc1e-f163-4621-8688-e77195d6e80d.png)
+
+![Screenshot at 2021-07-21 22-53-19](https://user-images.githubusercontent.com/52857059/126559146-3d478da0-4f5a-499b-8063-efa46d01b2ba.png)
 
 ## 4- BLACKLIST(medium)
 
