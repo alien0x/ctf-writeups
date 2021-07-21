@@ -296,7 +296,7 @@ By guessing &trying I finally got the flag :"D
 
 It was the same - inception challenge - But the blacklist was space , i tried (/**/) as space but it was faild .
 
-finally i found (/*_*/) worked as a space without waf caught it :D 
+finally i found (/* _ */) worked as a space without waf caught it :D 
 the same mechanism again ...
 
 ![Screenshot at 2021-07-21 15-15-04](https://user-images.githubusercontent.com/52857059/126556433-9d813bfc-f7ab-4658-992a-8c9c74f92d16.png)
