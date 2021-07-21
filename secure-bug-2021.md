@@ -4,7 +4,23 @@ It was awesome ctf ,so let's enjoy with writeup.
 
 # web challenges:
 
-## 1- ALLLn1(medium)
+## 1- yummy cookie(easy)
+
+if we go to robots.txt
+![Screenshot at 2021-07-21 12-50-50](https://user-images.githubusercontent.com/52857059/126532244-bbbeab00-c481-4dd8-8796-bc2387fddf66.png)
+let's open it
+![Screenshot at 2021-07-21 12-52-21](https://user-images.githubusercontent.com/52857059/126541361-fd18864b-3af2-4b03-b041-8b75630f46fc.png)
+ hmmm let's try this cookie --> 
+ ![Screenshot at 2021-07-21 12-53-05](https://user-images.githubusercontent.com/52857059/126541551-37d9a6b3-bb92-43de-8e75-52076fb659ab.png)
+ 
+change user-agent to CyberTalents
+![Screenshot at 2021-07-21 12-53-36](https://user-images.githubusercontent.com/52857059/126541686-16595594-822a-4623-b551-36237c65888e.png)
+
+
+
+
+
+## 2- ALLLn1(medium)
 
 ![Screenshot at 2021-07-21 12-39-35](https://user-images.githubusercontent.com/52857059/126521585-a4841180-b58a-4e82-b9d3-93429f94495b.png)
 
