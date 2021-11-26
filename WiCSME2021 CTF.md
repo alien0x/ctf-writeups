@@ -25,12 +25,15 @@ next step , let's read flag file --> ${system(base64_decode(Y2F0IC4uL2ZsYWcq))}
 
 
 ## 2- Potent Quotes
+![Screenshot at 2021-11-25 19-54-12](https://user-images.githubusercontent.com/52857059/143547317-5ee748d1-aab4-4f33-bc0e-8816ecadb6e9.png)
 
 After downloading the files' challenge locally , I found query of input 
 
+![Screenshot at 2021-11-26 09-53-45](https://user-images.githubusercontent.com/52857059/143547089-f06f8c4b-4749-4c33-9f31-9dc5a7249e64.png)
+
 Let's try injecting pass input with ```html 1' or '1'='1 ```
 
-
+![Screenshot at 2021-11-26 10-01-17](https://user-images.githubusercontent.com/52857059/143547148-b89b03d8-01be-44c9-97ef-8640261a8e0e.png)
 
 
 ## 3- INCEPTION(easy)
