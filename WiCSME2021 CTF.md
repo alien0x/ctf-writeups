@@ -9,11 +9,11 @@ After clicking the Try Again button :
 
 ![Screenshot at 2021-11-25 19-32-26](https://user-images.githubusercontent.com/52857059/143484789-d5764601-d715-4dda-87f6-225147275112.png)
 
-I try php code injection ${system('ls')}
+I tried php code injection ${system('ls')}
 
 ![Screenshot at 2021-11-25 19-35-36](https://user-images.githubusercontent.com/52857059/143484816-0131587c-3d6c-43f1-b947-5afac58b96ae.png)
 
-It works But I can't find flag file.<br />
+It was worked But I could't find flag file.<br />
 let's try another payload with base64_decode function --> ${system(base64_decode(bHMgLi4v))}
 
 ![Screenshot at 2021-11-25 19-39-34](https://user-images.githubusercontent.com/52857059/143484886-c4cdb4ad-025d-46f2-85c7-57850b62bd3d.png)
@@ -31,7 +31,7 @@ After downloading the files' challenge locally , I found query of input
 
 ![Screenshot at 2021-11-26 09-53-45](https://user-images.githubusercontent.com/52857059/143547089-f06f8c4b-4749-4c33-9f31-9dc5a7249e64.png)
 
-Let's try injecting pass input with ``` 1' or '1'='1 ```
+Let's tried injecting pass input with ``` 1' or '1'='1 ```
 
 ![Screenshot at 2021-11-26 10-01-17](https://user-images.githubusercontent.com/52857059/143547148-b89b03d8-01be-44c9-97ef-8640261a8e0e.png)
 
@@ -40,11 +40,11 @@ Let's try injecting pass input with ``` 1' or '1'='1 ```
 ![Screenshot at 2021-11-26 10-04-55](https://user-images.githubusercontent.com/52857059/143547836-fcee23ee-9792-461d-90ca-799a392a5460.png)
 
 After downloading the files' challenge locally ,I noticed The application use template Engine .<br />
-I used template injection in python because the application was made with flask.
+I use template injection in python because the application was made with flask.
 
 ![Screenshot at 2021-11-26 10-07-03](https://user-images.githubusercontent.com/52857059/143549346-bbbcb5dd-9b70-4215-9bec-90de69252b20.png)
 
-I noticed also The flag in the config so the payload is ```{{config.items()}}```
+I notice also The flag in the config so the payload is ```{{config.items()}}```
 
 ![Screenshot at 2021-11-26 10-19-37](https://user-images.githubusercontent.com/52857059/143549374-639f8833-23a9-4695-9c45-2b810932b34d.png)
 
@@ -58,11 +58,11 @@ let's try path traversal
 ![Screenshot at 2021-11-26 10-23-12](https://user-images.githubusercontent.com/52857059/143551120-363c8368-05e9-407f-8147-b3cab69b1f20.png)
 It works.
 
-I noticed the server is nginx so we could read the access.log ```/var/log/nginx/access.log```
+I notice the server is nginx so we could read the access.log ```/var/log/nginx/access.log```
 
 ![Screenshot at 2021-11-26 10-25-59](https://user-images.githubusercontent.com/52857059/143551202-38954555-d1cd-452b-818e-2db06bcc1bd4.png)
 
-I notices the user-agent was printed in access.log
+I notice the user-agent was printed in access.log
 
 ![Screenshot at 2021-11-26 10-38-17](https://user-images.githubusercontent.com/52857059/143551771-872a1ce2-bc54-40b3-bff4-9a29529861a5.png)
 
