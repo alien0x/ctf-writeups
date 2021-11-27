@@ -84,27 +84,7 @@ With ```<?php system('cat ../flag*') ?>``` we can read the flag
 
 ![Screenshot at 2021-11-26 10-31-54](https://user-images.githubusercontent.com/52857059/143552310-8137f420-2872-48f9-8254-cdfddc5e1322.png)
 
+## 5- IMF-searching
 
 
-
-
-
-
-## 5- BUY THE FLAG(easy)
-
-this challenge depend on decreption let's see it .
-![Screenshot at 2021-07-21 22-41-03](https://user-images.githubusercontent.com/52857059/126557249-e4722ab1-47e7-48fa-ad35-6a9f4eb9d8e9.png)
-
-With a little care we notice that by changing the cookie it returns to the original value so it is sensitive to cookies according to the cookie
-```html
-Cookie:3054505242564F465A55567A59456257644662475647644B5A56597759466255426A57735A315431305756584A6C566A746B567759565531736D5956683261546C58557849474E78306D56
-```
-then by unhexing and reversing and decoding base64 5 times , we will get 
-```html
-User_is_=Fread
-```
-now we have to change value to Us3r & encrept User_is_=Us3r hexing & reversing and encoding base64 5 times
-after that u will get the flag 
-
-![Screenshot at 2021-07-21 16-20-32](https://user-images.githubusercontent.com/52857059/126558141-f3f012a4-3f41-4d53-9791-f88a2961025d.png)
 
