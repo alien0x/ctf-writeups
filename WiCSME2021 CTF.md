@@ -9,11 +9,11 @@ After clicking the Try Again button :
 
 ![Screenshot at 2021-11-25 19-32-26](https://user-images.githubusercontent.com/52857059/143484789-d5764601-d715-4dda-87f6-225147275112.png)
 
-I tried php code injection ${system('ls')}
+I try php code injection ${system('ls')}
 
 ![Screenshot at 2021-11-25 19-35-36](https://user-images.githubusercontent.com/52857059/143484816-0131587c-3d6c-43f1-b947-5afac58b96ae.png)
 
-It was worked But I could't find flag file.<br />
+It works But I can't find flag file.<br />
 let's try another payload with base64_decode function --> ${system(base64_decode(bHMgLi4v))}
 
 ![Screenshot at 2021-11-25 19-39-34](https://user-images.githubusercontent.com/52857059/143484886-c4cdb4ad-025d-46f2-85c7-57850b62bd3d.png)
@@ -31,7 +31,7 @@ After downloading the files' challenge locally , I found query of input
 
 ![Screenshot at 2021-11-26 09-53-45](https://user-images.githubusercontent.com/52857059/143547089-f06f8c4b-4749-4c33-9f31-9dc5a7249e64.png)
 
-Let's tried injecting pass input with ``` 1' or '1'='1 ```
+Let's try injecting pass input with ``` 1' or '1'='1 ```
 
 ![Screenshot at 2021-11-26 10-01-17](https://user-images.githubusercontent.com/52857059/143547148-b89b03d8-01be-44c9-97ef-8640261a8e0e.png)
 
